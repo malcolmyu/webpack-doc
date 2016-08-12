@@ -36,7 +36,5 @@ webpack 支持 SourceUrls 和 **SourceMaps **来进行简单的 debug。它可�
 
 ## 多目标
 
-webpack 的主要目标是**网页**，但也支持给 WebWorkers 和 node.js。
-
-
+webpack 的主要目标是**网页**，但也支持给 [WebWorkers](https://github.com/webpack/worker-loader) 和 node.js。
 

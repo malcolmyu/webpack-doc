@@ -24,5 +24,19 @@ webpack 支持 **AMD 和 CommonJs** 的模块类型。他会对你代码的抽�
 
 ## 代码分割
 
-webpack
+webpack 允许我们将代码库分割为**按需**加载的代码块（chunks），由此可以减少初始加载时间。
+
+## 优化
+
+webpack 可以进行需要优化以**减少输出文件大小**，它也通过使用哈希的方式关注请求**缓存**。
+
+## 开发工具
+
+webpack 支持 SourceUrls 和 **SourceMaps **来进行简单的 debug。它可以监听你的文件变化，并通过开发中间件和开发服务器来进行**自动重载**。
+
+## 多目标
+
+webpack 的主要目标是**网页**，但也支持给 WebWorkers 和 node.js。
+
+
 

@@ -2,9 +2,7 @@
 
 webpack takes modules with dependencies and generates static assets representing those modules.
 
-
-
-
+![](http://webpack.github.io/assets/what-is-webpack.png)
 
 ## **Why another module bundler?**
 

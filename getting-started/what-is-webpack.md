@@ -2,9 +2,7 @@
 
 webpack takes modules with dependencies and generates static assets representing those modules.
 
-
-
-
+![](http://webpack.github.io/assets/what-is-webpack.png)
 
 ## **Why another module bundler?**
 
@@ -23,13 +21,13 @@ I tried to extend existing module bundlers, but it wasn’t possible to achieve 
 
 ## **How is webpack different?**
 
-#### [**Code Splitting**](http://webpack.github.io/docs/code-splitting.html)
+#### **[Code Splitting](http://webpack.github.io/docs/code-splitting.html)**
 
 webpack has two types of dependencies in its dependency tree: sync and async. Async dependencies act as split points and form a new chunk. After the chunk tree is optimized, a file is emitted for each chunk.
 
 Read more about [Code Splitting](http://webpack.github.io/docs/code-splitting.html).
 
-#### [**Loaders**](http://webpack.github.io/docs/loaders.html)
+#### **[Loaders](http://webpack.github.io/docs/loaders.html)**
 
 webpack can only process JavaScript natively, but loaders are used to transform other resources into JavaScript. By doing so, every resource forms a module.
 
@@ -41,7 +39,7 @@ webpack has a clever parser that can process nearly every 3rd party library. It 
 
 Read more about [expressions in dependencies](http://webpack.github.io/docs/context.html), [CommonJs](http://webpack.github.io/docs/commonjs.html) and [AMD](http://webpack.github.io/docs/amd.html).
 
-#### [**Plugin system**](http://webpack.github.io/docs/plugins.html)
+#### **[Plugin system](http://webpack.github.io/docs/plugins.html)**
 
 webpack features a rich plugin system. Most internal features are based on this plugin system. This allows you to customize webpack for your needs and distribute common plugins as open source.
 

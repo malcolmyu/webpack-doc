@@ -8,4 +8,5 @@
     * [使用](getting-started/使用.md)
     * [使用加载器](getting-started/使用加载器.md)
     * [使用插件](getting-started/使用插件.md)
+    * [开发者工具](getting-started/开发者工具.md)
 

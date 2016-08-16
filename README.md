@@ -32,7 +32,7 @@ webpack 可以进行需要优化以**减少输出文件大小**，它也通过�
 
 ## 开发工具
 
-webpack 支持 SourceUrls 和 **SourceMaps **来进行简单的 debug。它可以监听你的文件变化，并通过开发中间件和开发服务器来进行**自动重载**。
+webpack 支持 SourceUrls 和 **SourceMaps** 来进行简单的 debug。它可以监听你的文件变化，并通过开发中间件和开发服务器来进行**自动重载**。
 
 ## 多目标
 

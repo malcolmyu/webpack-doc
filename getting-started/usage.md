@@ -44,50 +44,50 @@ webpack 将读取并分析入口点及其依赖（包括传递依赖），然后
 
 ![](https://dtinth.github.io/webpack-docs-images/usage/how-it-works.png)
 
-Now your bundle is ready to be run. Run `node app.bundle.js` and marvel in your abundance of cats.
-现在我们的打包文件已可以准备运行了，运行 `node app.bundle.js` 
+现在我们的打包文件已可以准备运行了，运行 `node app.bundle.js` 并为我们拥有这么多猫而感到惊叹吧（**译者注：**文件运行的结果是输出了三只猫的名字）。
 
-```
+```js
 node app.bundle.js
 ["dave", "henry", "martha"]
 ```
 
-You can also use the bundle in the browser.
+你可可以在浏览器环境中使用打包后的文件。
 
-# **GETTING SERIOUS**
+# **请注意**
 
-webpack is a very flexible module bundler. It offers a lot of advanced features, but not all features are exposed via the command-line interface. To gain full access to webpack’s flexibility, we need to create a “configuration file”.
+webpack 是一个非常易于扩展的模块打包工具，他提供了很多先进的特性，但不是所有特性都暴露了命令行接口。为了更灵活的使用 webpack 的全部特性，我们需要创建一个『配置文件』。
 
-## **Project structure**
+## **项目结构**
 
-In real-world webpack projects, we’ll separate the source files from the bundled files by organizing them in folders. For example, we’ll put the source files in **src**, and bundled files in **bin**.
+在一个真实的 webpack 项目中，我们会通过在不同文件夹中管理资源文件与打包文件来将二者分开。例如，我们会将资源文件放到 **src** 中，并将打包文件放到 **bin** 中。
 
-Our final project structure will look like this:
+我们最终的项目结构可能看起来是这个样子：
+
+![](https://raw.githubusercontent.com/dtinth/webpack-docs-images/2459637650502958669ea6b11bf49dc0b3b083ae/usage/project-structure.png)
 
 
+> _在实际使用中存在太多的项目结构一些项目使用 __`app`__ 而非 __`src`__。一些项目使用 __`dist`__ 或 __`build`__ 来替代 __`bin`__。拥有自动化测试的项目通常使用 __`test`__、__`tests`__、__`spec`__、__`specs`__ 或者把测试文件也放在源代码文件夹中。_
 
-> _In the wild, there are many project structures. Some projects use __`app`__ instead of __`src`__. Some projects use __`dist`__ or__`build`__ instead of __`bin`__. Projects with tests usually use __`test`__, __`tests`__, __`spec`__, __`specs`__ or colocate the test files in the source folder._
-
-1. Create the `bin` and `src` directory.
+1. 创建 `bin` 和 `src` 目录。
 
   ```
    mkdir bin
    mkdir src
   ```
 
-2. Move the original source files to the `src` folder.
+2. 将原来的源代码文件移动端 `src` 文件夹。
 
   ```
    mv app.js cats.js src
   ```
 
-3. Initialize an npm project.
+3. 初始化 npm 项目。
 
   ```
-   npm init # (answer the questions)
+   npm init #（回答命令行中的问题）
   ```
 
-4. Install webpack as a development dependency. This lets your project declare the version of webpack it is compatible with.
+4. 将 webpack 作为开发依赖安装，这使你的项目可以声明其兼容的 webpack 版本。
 
   ```
    npm install --save-dev webpack

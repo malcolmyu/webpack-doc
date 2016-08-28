@@ -94,13 +94,13 @@ webpack 是一个非常易于扩展的模块打包工具，他提供了很多先
   ```
 
 
-## **Moving to a configuration file.**
+## **下面看下配置文件**
 
-As your project grows and your configuration becomes more complex, it becomes unwieldy to configure webpack from the command line. Let’s create a configuration file instead.
+随着你项目的增长，你的配置将会变得复杂，使用命令行配置 webpack 会变得极为不便。让我们创建一个配置文件来代替这一工作。
 
-1. Create `webpack.config.js`:
+1. 创建 `webpack.config.js`：
 
-  ```
+  ```js
    module.exports = {
        entry: './src/app.js',
        output: {
@@ -110,29 +110,30 @@ As your project grows and your configuration becomes more complex, it becomes un
    };
   ```
 
-  > _A webpack configuration file is a CommonJS-style module. So you can run any kind of code here, as long as a configuration object is exported out of this module._
+  > _webpack 配置文件是 CommonJS 类型的模块。因此你完全可以在里面运行任意类型的代码，只要这个模块能导出一个配置对象即可。_
 
-2. With the configuration file in place, you can now simply run webpack like this:
+
+2. 只要写好了配置文件，我们就可以像这样简单的运行 webpack：
 
   ```
    webpack
   ```
 
-  > _webpack will read the configuration file, build the bundle, and save it as __`bin/app.bundle.js`__. If you examine webpack’s output you’ll see that it included both source files._
+  > _webpack 将读取配置文件，构建打包文件，并将其保存为 __`bin/app.bundle.js`__。如果检查 webpack 的输出文件，你会发现两个源文件都已包含在内。_
 
-3. Run `bin/app.bundle.js` and you’ll get your list of cats again.
+3. 运行 `bin/app.bundle.js`，我们会再次看到猫儿们。
 
-  ```
+  ```js
    node bin/app.bundle.js
    ["dave", "henry", "martha"]
   ```
 
 
-> _You can also __`require()`__ modules installed via npm with no extra configuration._
+> _我们也可以 __`require()`__ 那些通过 npm 安装的模块而无需其他配置_
 
-## **Using loaders**
+## **使用加载器**
 
-webpack only supports JavaScript modules natively, but most people will be using a transpiler for ES2015, CoffeeScript, TypeScript, etc. They can be used in webpack by using [loaders](https://webpack.github.io/docs/using-loaders.html "Using Loaders").
+webpack 仅支持原生的 JavaScript 模块，但许多人会使用 ES2015、CoffeeScript、TypeScript 等编译工具。他们可以通过 [加载器](https://webpack.github.io/docs/using-loaders.html "Using Loaders")在 webpack 中使用。
 
 Loaders are special modules webpack uses to ‘load’ other modules \(written in another language\) into JavaScript \(that webpack understands\). For example, [`babel-loader`](https://github.com/babel/babel-loader) uses Babel to load ES2015 files.
 

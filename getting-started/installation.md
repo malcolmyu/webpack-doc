@@ -1,54 +1,54 @@
 ## **node.js**
 
-Install [node.js](http://nodejs.org/).
+安装 [node.js](http://nodejs.org/)。
 
-node.js comes with a package manager called `npm`.
+node.js 拥有一个叫做 `npm` 的包管理器。
 
 ## **webpack**
 
-webpack can be installed through `npm`:
+webpack 可以通过 `npm` 安装：
 
 ```
 $ npm install webpack -g
 ```
 
-webpack is now installed globally and the `webpack` command is available.
+webpack 现在被全局安装，且可以使用 `webpack` 命令了。
 
-## **Use webpack in a project**
+## **在项目中使用 webpack**
 
-It’s the best to have webpack also as dependency in your project. Through this you can choose a local webpack version and will not be forced to use the single global one.
+最好在项目中也将 webpack 作为依赖，这样之后我们就可以给当前的 webpack 选择一个版本，而不必强制使用那一个全局的 webpack。
 
-Add a `package.json` configuration file for `npm` with:
+使用 `npm` 添加一个 `package.json` 配置文件：
 
 ```
 $ npm init
 ```
 
-The answers to the questions are not so important if you don’t want to publish your project to npm.
+如果我们不想发布项目到 npm，那么之后控制台里的安装选项随便填一下就好了，并不重要。
 
-Install and add `webpack` to the `package.json` with:
+安装 `webpack` 并将其加入 `package.json` ：
 
 ```
 $ npm install webpack --save-dev
 ```
 
-## **Versions**
+## **版本**
 
-There are two versions of webpack available. The stable one and a beta version. The beta version is marked with a `-beta` in the version string. The beta version may contain fragile changes or experimental features and is less tested. See [changelog](http://webpack.github.io/docs/changelog.html)for differences. For serious stuff you should use the stable version:
+webpack 有两个可用版本：稳定版和 beta 版。beta 版本在其版本号里用 `-beta` 标记。beta 版本可能包含不稳定的改动、实验性的功能和较少的测试。可以通过[变更日志](http://webpack.github.io/docs/changelog.html) 来查看版本间的不同。 在正式的开发里你应该选择稳定的版本：
 
 ```
 $ npm install webpack@1.2.x --save-dev
 ```
 
-## **Dev Tools**
+## **开发工具**
 
-If you want to use dev tools you should install it:
+如果我们想使用开发工具，可以自行安装：
 
 ```
 $ npm install webpack-dev-server --save-dev
 ```
 
-## **Continue reading**
+## **深入了解**
 
-You can continue reading [Usage](http://webpack.github.io/docs/usage.html).
+你可以继续阅读[使用](http://webpack.github.io/docs/usage.html)一章。
 

@@ -1,50 +1,51 @@
-# **INSTALLATION**
+# **安装**
 
-You can install webpack via npm:
+你可以通过 npm 来安装 webpack：
 
 ```
 npm install webpack -g
 ```
 
-> _**Note:**__ We’re installing webpack globally for demonstration purposes. When you are building a real application, it’s more advisable to install webpack as a__`devDependency`__ of your project._
+> _**注意:**_ _我们为了演示而全局安装了 webpack，当你创建一个真正的应用时，更明智的方式是将 webpack 作为项目的 __`devDependency`（开发依赖）。__ _
 
-# **GETTING STARTED**
+# **开始**
 
-First, we’ll learn the basics of webpack by using just webpack’s command-line interface.
+首先，我们将通过使用命令行接口来学习一下 webpack 的基本用法。
 
-## **Create a modular JavaScript project**
+## **创建一个模块化 JavaScript 项目**
 
-Let’s create some modules in JavaScript, using the CommonJs syntax:
+让我们使用 CommonJs 的语法创建一些 JavaScript 的模块：
 
 **cats.js**
 
-```
+```js
 var cats = ['dave', 'henry', 'martha'];
 module.exports = cats;
 ```
 
-**app.js \(Entry Point\)**
+**app.js（入口点）**
 
-```
+```js
 cats = require('./cats.js');
 console.log(cats);
 ```
 
-The “entry point” is where your application will start, and where webpack will start tracking dependencies between modules.
+『入口点』就是应用启动之处, 也是 webpack 开始在模块间追踪依赖之处。
 
-## **webpack in 5 seconds**
+## **5 秒钟学会 webpack**
 
-Give webpack the entry point \(app.js\) and specify an output file \(app.bundle.js\):
+给 webpack 提供入口点（app.js）并制定一个输出文件（app.bundle.js）：
 
 ```
 webpack ./app.js app.bundle.js
 ```
 
-webpack will read and analyze the entry point and its dependencies \(including transitive dependencies\). Then it will bundle them all into `app.bundle.js`.
+webpack 将读取并分析入口点及其依赖（包括传递依赖），然后将其全部打包到 `app.bundle.js` 中。
 
-
+![](https://dtinth.github.io/webpack-docs-images/usage/how-it-works.png)
 
 Now your bundle is ready to be run. Run `node app.bundle.js` and marvel in your abundance of cats.
+现在我们的打包文件已可以准备运行了，运行 `node app.bundle.js` 
 
 ```
 node app.bundle.js

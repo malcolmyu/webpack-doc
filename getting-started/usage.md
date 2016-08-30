@@ -83,7 +83,7 @@ webpack 是一个非常易于扩展的模块打包工具，他提供了很多先
 
 3. 初始化 npm 项目。
 
-  ```
+  ```bash
    npm init #（回答命令行中的问题）
   ```
 
@@ -229,11 +229,11 @@ webpack 仅支持原生的 JavaScript 模块，但许多人会使用 ES2015、Co
 
 当你打开 `index.html`，你应该就能看到一群猫啦！
 
-我们还有很多[各种各样的加载器](https://webpack.github.io/docs/list-of-loaders.html "List of Loaders")，包括 css 和图片加载器，你可以用它们将各种文件引入到你的打包应用中。
+我们还有[各种各样的加载器](https://webpack.github.io/docs/list-of-loaders.html "List of Loaders")，包括 css 和图片加载器，你可以用它们将各种文件引入到你的打包应用中。
 
 ## **使用插件**
 
-通常情况下你还会想在你的工作流中给打包添加额外的处理流程。例如我们应该压缩文件，似的客户端可以更快加载。我们可以使用 [插件](https://webpack.github.io/docs/using-plugins.html "Using Plugins") 来完成这一工作。我们将在配置文件中添加 uglify 插件：
+通常情况下你还会想在你的工作流中给打包添加额外的处理流程。例如我们应该压缩文件，似的客户端可以更快加载。我们可以使用[插件](https://webpack.github.io/docs/using-plugins.html "Using Plugins")来完成这一工作。我们将在配置文件中添加 uglify 插件：
 
 ```js
 const webpack = require('webpack');
@@ -264,11 +264,11 @@ module.exports = {
 }
 ```
 
-webpack 中包含 Uglify 插件，因此我们不必添加额外的模块，但插件也不都是默认包含的。我们也可以编写 [自定义插件](https://webpack.github.io/docs/how-to-write-a-plugin.html "How to write a Plugin")。在这次构建中，uglify 插件将打包大小从 1618 字节压缩到 308 字节。
+webpack 中包含 Uglify 插件，因此我们不必添加额外的模块，但插件也不都是默认包含的。我们也可以编写[自定义插件](https://webpack.github.io/docs/how-to-write-a-plugin.html "How to write a Plugin")。在这次构建中，uglify 插件将打包大小从 1618 字节压缩到 308 字节。
 
 # **深入阅读**
 
 * 查看 [CLI](http://webpack.github.io/docs/cli.html) 以了解命令行接口。
 * 查看 [node.js API](http://webpack.github.io/docs/node.js-api.html) 以了解 node.js 的相关接口。
-* 查看 [配置](http://webpack.github.io/docs/configuration.html) 来了解配置选项。
+* 查看[配置](http://webpack.github.io/docs/configuration.html)来了解配置选项。
 

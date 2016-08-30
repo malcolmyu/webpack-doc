@@ -136,6 +136,8 @@ webpack 是一个非常易于扩展的模块打包工具，他提供了很多先
 webpack 仅支持原生的 JavaScript 模块，但许多人会使用 ES2015、CoffeeScript、TypeScript 等编译工具。他们可以通过 [加载器](https://webpack.github.io/docs/using-loaders.html "Using Loaders")在 webpack 中使用。
 
 Loaders are special modules webpack uses to ‘load’ other modules \(written in another language\) into JavaScript \(that webpack understands\). For example, [`babel-loader`](https://github.com/babel/babel-loader) uses Babel to load ES2015 files.
+加载器是一种特殊模块，webpack 使用它『加载』其他语言编写的模块转换成 webpack 能理解的 JavaScript 模块，例如 [`babel-loader`](https://github.com/babel/babel-loader) 使用 Babel 来加载 ES2015 的文件。
+
 
 
 

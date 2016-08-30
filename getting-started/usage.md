@@ -135,45 +135,37 @@ webpack 是一个非常易于扩展的模块打包工具，他提供了很多先
 
 webpack 仅支持原生的 JavaScript 模块，但许多人会使用 ES2015、CoffeeScript、TypeScript 等编译工具。他们可以通过 [加载器](https://webpack.github.io/docs/using-loaders.html "Using Loaders")在 webpack 中使用。
 
-Loaders are special modules webpack uses to ‘load’ other modules \(written in another language\) into JavaScript \(that webpack understands\). For example, [`babel-loader`](https://github.com/babel/babel-loader) uses Babel to load ES2015 files.
-加载器是一种特殊模块，webpack 使用它『加载』其他语言编写的模块转换成 webpack 能理解的 JavaScript 模块，例如 [`babel-loader`](https://github.com/babel/babel-loader) 使用 Babel 来加载 ES2015 的文件。
+加载器是一种特殊模块，webpack 使用它『加载』其他语言编写的模块转换成 webpack 能理解的 JavaScript 模块，例如 [`babel-loader`](https://github.com/babel/babel-loader) 使用 Babel 来加载用 ES2015 编写的文件。
 
+[`json-loader`](https://github.com/webpack/json-loader) 加载 json 文件（就是简单地添加一个 `module.exports =`，然后将其导出为 CommonJs 的模块）。
 
+加载器可被链接使用，有时我们必须链接使用加载器。例如，[`yaml-loader`](https://github.com/okonet/yaml-loader) 仅能将 YAML 文件转化为 JSON 文件，因此我们需要将其与 `json-loader` 链接方可使用。
 
+### **使用 `babel-loader` 编译 ES2015**
 
-[`json-loader`](https://github.com/webpack/json-loader) loads JSON files \(simply by prepending `module.exports =` to turn it into a CommonJs module\).
+在这个示例中，我们将告知 webpack 通过 [Babel](https://babeljs.io/) 运行我们的源文件，这样我们就可以使用 ES2015 中的新特性。
 
-
-
-Loaders can be chained, and sometimes you need to chain loaders together. For example, [`yaml-loader`](https://github.com/okonet/yaml-loader) only converts YAML into JSON. Therefore, you need to chain it with `json-loader` so that it can be used.
-
-
-
-### **Transpiling ES2015 using **`babel-loader`
-
-In this example, we’re going to tell webpack to run our source files through [Babel](https://babeljs.io/) so we can use ES2015 features.
-
-1. Install Babel and the presets:
+1. 安装 Babel 和预设（presets）：
 
   ```
    npm install --save-dev babel-core babel-preset-es2015
   ```
 
-2. Install `babel-loader`:
+2. 安装 `babel-loader`：
 
   ```
    npm install --save-dev babel-loader
   ```
 
-3. Configure Babel to use these presets by adding `.babelrc`
+3. 通过添加 `.babelrc` 的方式，使用预设值配置 Babel：
 
-  ```
+  ```js
    { "presets": [ "es2015" ] }
   ```
 
-4. Modify `webpack.config.js` to process all `.js` files using `babel-loader`.
+4. 调整 `webpack.config.js` 文件，使其使用 `babel-loader` 处理所有的 `.js` 文件：
 
-  ```
+  ```js
    module.exports = {
        entry: './src/app.js',
        output: {
@@ -190,19 +182,19 @@ In this example, we’re going to tell webpack to run our source files through [
    }
   ```
 
-  > _We are excluding __`node_modules`__ here because otherwise all external libraries will also go through Babel, slowing down compilation._
+  > _我们在这里排除了 __`node_modules`__ 的加载，否则所有的外部依赖库都需要使用 Babel 编译，这样会减慢编译速度。_
 
-5. Install the libraries you want to use \(in this example, jQuery\):
+5. 安装你想使用的库（例子中使用 jQuery）：
 
   ```
    npm install --save jquery babel-polyfill
   ```
 
-  > _We are using __`--save`__ instead of __`--save-dev`__ this time, as these libraries will be used in runtime. We also use__`babel-polyfill`__ so that ES2015 APIs are available in older browsers._
+  > _我们在这里使用 __`--save`__ 而不是 __`--save-dev`__，是因为这些库将会在运行时使用。我们也使用了 __`babel-polyfill`__ 以便在老浏览器中兼容 ES2015 的 API。_
 
-6. Edit `src/app.js`:
+6. 编辑 `src/app.js`：
 
-  ```
+  ```js
    import 'babel-polyfill';
    import cats from './cats';
    import $ from 'jquery';
@@ -214,15 +206,15 @@ In this example, we’re going to tell webpack to run our source files through [
    }
   ```
 
-7. Bundle the modules using webpack:
+7. 使用 webpack 打包模块
 
   ```
    webpack
   ```
 
-8. Add `index.html` so this app can be run in browser:
+8. 添加 `index.html` 使这个应用可以在浏览器中运行：
 
-  ```
+  ```html
    <!DOCTYPE html>
    <html>
        <head>
@@ -235,17 +227,15 @@ In this example, we’re going to tell webpack to run our source files through [
   ```
 
 
-When you open `index.html`, you should now see a list of cats!
+当你打开 `index.html`，你应该就能看到一群猫啦！
 
+我们还有很多[各种各样的加载器](https://webpack.github.io/docs/list-of-loaders.html "List of Loaders")，包括 css 和图片加载器，你可以用它们将各种文件引入到你的打包应用中。
 
+## **使用插件**
 
-There are a number of [different loaders](https://webpack.github.io/docs/list-of-loaders.html "List of Loaders") you can use to include files in your app bundle, including css and image loaders.
+通常情况下你还会想在你的工作流中给打包添加额外的处理流程。例如我们应该压缩文件，似的客户端可以更快加载。我们可以使用 [插件](https://webpack.github.io/docs/using-plugins.html "Using Plugins") 来完成这一工作。我们将在配置文件中添加 uglify 插件：
 
-## **Using plugins**
-
-Usually you’ll want to do some additional processing of the bundle in your workflow. An example would be minifying your file so that clients can load it faster. This can be done with [plugins](https://webpack.github.io/docs/using-plugins.html "Using Plugins"). We’ll add the uglify plugin to our configuration:
-
-```
+```js
 const webpack = require('webpack');
 
 module.exports = {
@@ -274,11 +264,11 @@ module.exports = {
 }
 ```
 
-The Uglify plugin is included with webpack so you don’t need to add additional modules, but this may not always be the case. You can write your own [custom plugins](https://webpack.github.io/docs/how-to-write-a-plugin.html "How to write a Plugin"). For this build, the uglify plugin cut the bundle size from 1618 bytes to 308 bytes.
+webpack 中包含 Uglify 插件，因此我们不必添加额外的模块，但插件也不都是默认包含的。我们也可以编写 [自定义插件](https://webpack.github.io/docs/how-to-write-a-plugin.html "How to write a Plugin")。在这次构建中，uglify 插件将打包大小从 1618 字节压缩到 308 字节。
 
-# **FURTHER READING**
+# **深入阅读**
 
-* see [CLI](http://webpack.github.io/docs/cli.html) for the command line interface.
-* see [node.js API](http://webpack.github.io/docs/node.js-api.html) for the node.js interface.
-* see [Configuration](http://webpack.github.io/docs/configuration.html) for the configuration options. ..
+* 查看 [CLI](http://webpack.github.io/docs/cli.html) 以了解命令行接口。
+* 查看 [node.js API](http://webpack.github.io/docs/node.js-api.html) 以了解 node.js 的相关接口。
+* 查看 [配置](http://webpack.github.io/docs/configuration.html) 来了解配置选项。
 

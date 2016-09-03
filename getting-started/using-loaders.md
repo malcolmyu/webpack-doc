@@ -61,56 +61,55 @@ $ npm install xxx-loader --save-dev
 > _**注意：**假如你打算让你的脚本运行在不确定的环境中（node.js 或浏览器），就要尽可能避免使用这种方式。对于指定的加载器使用配置文件的配置方式（参加下一节）。 _
 
 It’s possible to specify the loaders in the `require` statement \(or `define`, `require.ensure`, etc.\). Just separate loaders from resource with `!`. Each part is resolved relative to the current directory.
+我们可以在 `require` 语句（或者 `define`、`require.ensure` 等）中可以指定加载器，仅仅需要使用 `!` 将加载器和资源分开。每一部分的解析均相对于当前目录。
 
-It’s possible to overwrite any loaders in the configuration by prefixing the entire rule with `!`.
+在配置文件中可以通过在整条规则之前添加 `!` 前缀的方式覆盖任意加载器。
 
-```
+```js
 require("./loader!./dir/file.txt");
-// => uses the file "loader.js" in the current directory to transform
-//    "file.txt" in the folder "dir".
+// => 在当前目录下使用 loader.js 来转换 dir 路径下的文件 file.txt 
 
 require("jade!./template.jade");
-// => uses the "jade-loader" (that is installed from npm to "node_modules")
-//    to transform the file "template.jade"
-//    If configuration has some transforms bound to the file, they will still be applied.
+// => 使用 jade-loader（该加载器通过 npm 安装在 node_modules 中）
+//    来转换文件 template.jade
+//    如果配置文件中有绑定到该文件的一些转换器，那这些转换器也会被应用。
 
 require("!style!css!less!bootstrap/less/bootstrap.less");
-// => the file "bootstrap.less" in the folder "less" in the "bootstrap"
-//    module (that is installed from github to "node_modules") is
-//    transformed by the "less-loader". The result is transformed by the
-//    "css-loader" and then by the "style-loader".
-//    If configuration has some transforms bound to the file, they will not be applied.
+// => 在 less 路径下的 bootstrap 模块中的文件 bootstrap.less
+//    (该模块通过 github 安装到 node_modules) 被 less-loader 转换。
+//    其结果被 css-loader 转换，然后再被 "style-loader" 转换。
+//    如果配置文件中有绑定到该文件的一些转换器，那这些转换器也会被应用。
 ```
 
-## [**Configuration**](http://webpack.github.io/docs/configuration.html)
+## [**配置文件方式**](http://webpack.github.io/docs/configuration.html)
 
-You can bind loaders to a RegExp via configuration:
+你可以通过配置文件将加载器绑定到一个正则表达式上：
 
-```
+```js
 {
     module: {
         loaders: [
             { test: /\.jade$/, loader: "jade" },
-            // => "jade" loader is used for ".jade" files
+            // => jade 加载器应用于 .jade 文件
 
             { test: /\.css$/, loader: "style!css" },
-            // => "style" and "css" loader is used for ".css" files
-            // Alternative syntax:
+            // => style、css 加载器应用于 .css 文件
+            // 也可以使用下面这种写法：
             { test: /\.css$/, loaders: ["style", "css"] },
         ]
     }
 }
 ```
 
-## [**CLI**](http://webpack.github.io/docs/cli.html)
+## [**命令行接口方式**](http://webpack.github.io/docs/cli.html)
 
-You can bind loaders to an extension via CLI:
+你可以通过命令行接口将加载器绑定到扩展名上：
 
 ```
 $ webpack --module-bind jade --module-bind 'css=style!css'
 ```
 
-This uses the loader “jade” for “.jade” files and the loaders “style” and “css” for “.css” files.
+这表示对 .jade 文件使用 jade 加载器，对 .css 文件使用 style 加载器和 css 加载器。
 
 ## **Query parameters**
 

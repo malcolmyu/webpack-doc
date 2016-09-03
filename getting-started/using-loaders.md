@@ -1,12 +1,13 @@
-# **WHAT ARE LOADERS?**
+# **什么是加载器？**
 
-Loaders are transformations that are applied on a resource file of your app. They are functions \(running in node.js\) that take the source of a resource file as the parameter and return the new source.
+加载器是应用于你应用的资源文件的转换器，它们是运行在 node.js 中的函数，以资源文件作为参数输入，并返回新的资源。
 
-For example, you can use loaders to tell webpack to load CoffeeScript or JSX.
+举例说明，你可以使用加载器来告诉 webpack 来加载 CoffeeScript 或 JSX。
 
-## **Loader features**
+## **加载器的特性**
 
 * Loaders can be chained. They are applied in a pipeline to the resource. The final loader is expected to return JavaScript; each other loader can return source in arbitrary format, which is passed to the next loader.
+* 加载器可被链接。
 * Loaders can be synchronous or asynchronous.
 * Loaders run in Node.js and can do everything that’s possible there.
 * Loaders accept query parameters. This can be used to pass configuration to the loader.

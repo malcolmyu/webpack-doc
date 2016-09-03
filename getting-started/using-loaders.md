@@ -111,27 +111,27 @@ $ webpack --module-bind jade --module-bind 'css=style!css'
 
 这表示对 .jade 文件使用 jade 加载器，对 .css 文件使用 style 加载器和 css 加载器。
 
-## **Query parameters**
+## **查询参数**
 
-Loader can be passed query parameters via a query string \(just like in the web\). The query string is appended to the loader with `?`. i.e. `url-loader?mimetype=image/png`.
+加载器通过一个查询字符串（正如 web 中的查询字符串一样）的方式传入查询参数。查询字符串添加到加载器后面，通过 `?` 分割，如：`url-loader?mimetype=image/png`。
 
-Note: The format of the query string is up to the loader. See format in the loader documentation. Most loaders accept parameters in the normal query format \(`?key=value&key2=value2`\) and as JSON object \(`?{"key":"value","key2":"value2"}`\).
+注意：查询字符串的格式取决于加载器，可在加载器的文档中查询其格式。大多数加载器接受标准查询格式 `?key=value&key2=value2` 或 JSON 对象 `{"key":"value","key2":"value2"}`。
 
-### **in **`require`
+### **在 `require` 中使用 **
 
-```
+```js
 require("url-loader?mimetype=image/png!./file.png");
 ```
 
-### **Configuration**
+### **配置文件中使用**
 
-```
+```js
 { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
 ```
 
-or
+或
 
-```
+```js
 {
     test: /\.png$/,
     loader: "url-loader",
@@ -139,7 +139,7 @@ or
 }
 ```
 
-### **CLI**
+### **命令行使用**
 
 ```
 webpack --module-bind "png=url-loader?mimetype=image/png"

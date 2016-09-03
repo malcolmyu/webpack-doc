@@ -50,15 +50,15 @@ $ npm install xxx-loader --save-dev
 
 # **使用**
 
-There are multiple ways to use loaders in your app:
+在我们的应用中有多种方式使用加载器：
 
-* explicit in the `require` statement
-* configured via configuration
-* configured via CLI
+* 直接使用 `require` 语句
+* 在配置文件中配置
+* 通过命令行接口（CLI）配置
 
-## **loaders in **`require`
+## **使用 `require` 引入**
 
-> _**Note:**__ Avoid using this, if at all possible, if you intend your scripts to be environment agnostic \(node.js and browser\). Use the configuration convention for specifying loaders \(see next section\)._
+> _**注意：**假如你打算让你的脚本运行在不确定的环境中（node.js 或浏览器），就要尽可能避免使用这种方式。对于指定的加载器使用配置文件的配置方式（参加下一节）。 _
 
 It’s possible to specify the loaders in the `require` statement \(or `define`, `require.ensure`, etc.\). Just separate loaders from resource with `!`. Each part is resolved relative to the current directory.
 

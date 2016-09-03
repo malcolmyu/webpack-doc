@@ -139,7 +139,7 @@ webpack 仅支持原生的 JavaScript 模块，但许多人会使用 ES2015、Co
 
 [`json-loader`](https://github.com/webpack/json-loader) 加载 json 文件（就是简单地添加一个 `module.exports =`，然后将其导出为 CommonJs 的模块）。
 
-加载器可被链接使用，有时我们必须链接使用加载器。例如，[`yaml-loader`](https://github.com/okonet/yaml-loader) 仅能将 YAML 文件转化为 JSON 文件，因此我们需要将其与 `json-loader` 链接方可使用。
+加载器可被链式使用，有时我们必须链式使用加载器。例如，[`yaml-loader`](https://github.com/okonet/yaml-loader) 仅能将 YAML 文件转化为 JSON 文件，因此我们需要将其与 `json-loader` 连接方可使用。
 
 ### **使用 `babel-loader` 编译 ES2015**
 

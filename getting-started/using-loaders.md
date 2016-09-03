@@ -6,30 +6,29 @@
 
 ## **加载器的特性**
 
-* Loaders can be chained. They are applied in a pipeline to the resource. The final loader is expected to return JavaScript; each other loader can return source in arbitrary format, which is passed to the next loader.
-* 加载器可被链接。
-* Loaders can be synchronous or asynchronous.
-* Loaders run in Node.js and can do everything that’s possible there.
-* Loaders accept query parameters. This can be used to pass configuration to the loader.
-* Loaders can be bound to extensions \/ RegExps in the configuration.
-* Loaders can be published \/ installed through `npm`.
-* Normal modules can export a loader in addition to the normal `main` via `package.json` `loader`.
-* Loaders can access the configuration.
-* Plugins can give loaders more features.
-* Loaders can emit additional arbitrary files.
-* [etc.](http://webpack.github.io/docs/loaders.html)
+* 加载器可被链式使用。它们以管道的方式应用到资源上，最后的加载器应返回 JavaScript；其他的加载器则可以返回任意格式的资源，并传递到下一个加载器中。
+* 加载器可以是同步的，也可以是异步的。
+* 加载器运行在 Node.js 中，且可以做 Node.js 能做的任何事情。
+* 加载器接受参数，因此可以给加载器传递配置项。
+* 在配置文件中，加载器可以绑定到对应的扩展名/正则表达式。
+* 加载器可以通过 `npm` 发布和安装。
+* 标准模块可以通过 `package.json` `loader`，在标准的 `main` 之外导出一个加载器。
+* 加载器可以访问配置文件。
+* 插件可以给加载器提供更多的特性。
+* 加载器可以导出额外的任意文件。
+* [等等](http://webpack.github.io/docs/loaders.html)。
 
-If you are interested in some loader examples head off to the [list of loaders](http://webpack.github.io/docs/list-of-loaders.html).
+如果你对一些加载器的例子感兴趣，可以查看[加载器列表](http://webpack.github.io/docs/list-of-loaders.html)。
 
-# **RESOLVING LOADERS**
+# **解析加载器**
 
-Loaders are [resolved similar to modules](http://webpack.github.io/docs/resolving.html). A loader module is expected to export a function and to be written in node.js compatible JavaScript. In the common case you manage loaders with npm, but you can also have loaders as files in your app.
+加载器的解析[与模块类似](http://webpack.github.io/docs/resolving.html)。一个加载器模块期望导出一个函数，并应该以与 node.js 兼容的模块编写。通常情况下我们通过 npm 管理加载器，但我们的加载器也可是是应用中的文件。
 
-## **Referencing loaders**
+## **引用加载器**
 
-By convention, though not required, loaders are usually named as `XXX-loader`, where `XXX` is the context name. For example, `json-loader`.
+尽管不是强制要求，但按照管理加载器通常被命名为 `XXX-loader`，`XXX` 是上下文名称。例如 `json-loader`。
 
-You may reference loaders by its full \(actual\) name \(e.g. `json-loader`\), or by its shorthand name \(e.g. `json`\).
+我们可以通过其全名（实际名称，如 `json-loader`）也可以通过缩写（如 `json`）来引用加载器。
 
 The loader name convention and precedence search order is defined by [`resolveLoader.moduleTemplates`](http://webpack.github.io/docs/configuration.html#resolveloader-moduletemplates) within the webpack configuration API.
 

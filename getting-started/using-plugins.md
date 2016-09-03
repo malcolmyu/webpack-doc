@@ -1,11 +1,11 @@
-Use plugins to add functionality typically related to bundles in webpack. For example, the[BellOnBundlerErrorPlugin](https://github.com/senotrusov/bell-on-bundler-error-plugin) will notify you of an error in the bundler build process.
+使用插件来给 webpack 的打包添加功能性的典型依赖。例如 [BellOnBundlerErrorPlugin](https://github.com/senotrusov/bell-on-bundler-error-plugin) 插件，将会提醒我们在打包构建过程中产生的错误。
 
-## **Built-in plugins**
+## **内置插件**
 
-Plugins are included in your module by using the plugins property in the webpack config.
+通过在 webpack 配置中使用插件属性，我们可以在模块中引入内置插件。
 
-```
-// webpack should be in the node_modules directory, install if not.
+```js
+// webpack 应该存在于 node_modules 目录中，如果不存在则需要安装
 var webpack = require("webpack");
 
 module.exports = {
@@ -17,17 +17,17 @@ module.exports = {
 };
 ```
 
-## **Other plugins**
+## **其他插件**
 
-Plugins that are not built-in may be installed via npm if published there, or by other means if not:
+对于没有内置的插件，如果其发布在 npm 源上，可以直接安装；如果没有发布可以使用其他方式：
 
 ```
 npm install component-webpack-plugin
 ```
 
-which can then be used as follows:
+可以使用如下方式使用：
 
-```
+```js
 var ComponentPlugin = require("component-webpack-plugin");
 module.exports = {
     plugins: [
@@ -36,11 +36,11 @@ module.exports = {
 }
 ```
 
-When installing third party plugins via npm it is advised to use this tool: [https:\/\/www.npmjs.com\/package\/webpack-load-plugins](https://www.npmjs.com/package/webpack-load-plugins)
+通过 npm 安装第三方插件时建议使用这个工具：[webpack-load-plugins](https://www.npmjs.com/package/webpack-load-plugins)。
 
-It checks for all third party plugins installed in your dependencies and lazyloads them when you need them.
+它会检查所有安装在依赖中的第三方插件，并且在你需要的时候进行懒加载。
 
-## **See also**
+## **参见**
 
-* [list of plugins](http://webpack.github.io/docs/list-of-plugins.html)
+* [插件列表](http://webpack.github.io/docs/list-of-plugins.html)
 

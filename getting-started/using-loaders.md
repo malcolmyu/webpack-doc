@@ -34,21 +34,21 @@
 
 加载器命名约定十分有益，除非直接使用 `require()` 语句引用。可以参见下面的使用场景。
 
-## **Installing loaders**
+## **安装加载器**
 
-If the loader is available on npm you can install the loader via:
+如果加载器在 npm 上可用，你可以通过这样的方式安装：
 
 ```
 $ npm install xxx-loader --save
 ```
 
-or
+或者
 
 ```
 $ npm install xxx-loader --save-dev
 ```
 
-# **USAGE**
+# **使用**
 
 There are multiple ways to use loaders in your app:
 

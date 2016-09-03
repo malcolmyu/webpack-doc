@@ -26,13 +26,13 @@
 
 ## **引用加载器**
 
-尽管不是强制要求，但按照管理加载器通常被命名为 `XXX-loader`，`XXX` 是上下文名称。例如 `json-loader`。
+尽管不是强制要求，但按照惯例加载器通常被命名为 `XXX-loader`，`XXX` 是上下文名称。例如 `json-loader`。
 
 我们可以通过其全名（实际名称，如 `json-loader`）也可以通过缩写（如 `json`）来引用加载器。
 
-The loader name convention and precedence search order is defined by [`resolveLoader.moduleTemplates`](http://webpack.github.io/docs/configuration.html#resolveloader-moduletemplates) within the webpack configuration API.
+加载器命名约定和搜索顺序优先级被 webpack 的配置 API [`resolveLoader.moduleTemplates`](http://webpack.github.io/docs/configuration.html#resolveloader-moduletemplates) 定义。
 
-Loader name conventions may be useful, especially when referencing them within `require()` statements; see usage below.
+加载器命名约定十分有益，除非直接使用 `require()` 语句引用。可以参见下面的使用场景。
 
 ## **Installing loaders**
 

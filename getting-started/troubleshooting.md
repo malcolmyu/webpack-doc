@@ -1,15 +1,16 @@
-# **RESOLVING**
+# **解析**
 
-## **general resolving issues**
+## **通常解析问题**
 
-* `--display-error-details` give you more details.
-* Read [Configuration](http://webpack.github.io/docs/configuration.html) regarding resolving starting at `resolve`
-  * loaders have their own resolving configuration`resolveLoader`
+* `--display-error-details` 参数会给我们提供更多细节
+* 阅读[配置项](http://webpack.github.io/docs/configuration.html)从 `resolve` 部分开始了解解析相关的内容
+  * 加载器有其自己的解析配置项 `resolveLoader`
 
 
-## `npm link`**ed modules don’t find their dependencies**
+## `npm link` **的模块无法找到其依赖**
 
-The node.js module resolving algorithm is pretty simple: module dependencies are looked up in `node_modules` folders in every parent directory of the requiring module. When you `npm link`modules with peer dependencies that are not in your root directory, modules can no longer be found. \(You probably want to consider `peerDependencies` with `npm link` as broken by design in node.js.\) Note that a dependency to the application \(even if this is not the perfect design\) is also a kind of peerDependency even if it’s not listed as such in the module’s `package.json`.
+模块解析的算法十分简单：模块依赖在 `node_modules` 文件夹和在每一个被依赖模块的父文件夹中查找。当你的 `npm link` 模块及其平级依赖不在根目录下，就无法找到该模块（你也可以认为在 node.js 的设计中，使用了 `npm link` 的 `peerDependencies` 是不可用的）。注意到应用的依赖，即使没有在 `package.json` 的模块中列出来，也是一种类型的平级依赖（尽管这不是一个完美的设计）。
+
 
 But you can easily workaround that in webpack: Add the `node_modules` folder of your application to the resolve paths. There are two config options for this: `resolve.fallback` and `resolveLoader.fallback`.
 

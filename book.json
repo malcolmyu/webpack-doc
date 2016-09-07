@@ -1,4 +1,10 @@
 {
+  "links": {
+    "sharing": {
+      "github": "https://github.com/malcolmyu/webpack-doc",
+      "weibo": "http://weibo.com/sombiesombie"
+    }
+  },
   "plugins": ["disqus"],
   "pluginsConfig": {
     "disqus": {

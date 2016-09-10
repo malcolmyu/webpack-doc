@@ -26,27 +26,27 @@ module.exports = {
 
 ## **在监听改变的时候 webpack 不会重新编译**
 
-### **File changes are being seen, just no files are being updated**
+### **文件的改动可被监听，但是没有文件被更新**
 
-Verify that webpack is not being notified of changes by running with the –progress flag. If progress shows on save but no files are output, it is likely a configuration issue, not a file watching issue.
+通过在运行 webpack 时加上 `-progress` 标记可以验证 webpack 是否没有感知到变动。如果在保存时看到了过程却无文件输出，那更有可能是修改了了一个配置文件，而非监听的文件。
 
 ```
 webpack --watch --progress
 ```
 
-### **Not enough watchers**
+### **没有足够的监听器**
 
-Verify that if you have enough available watchers in your system. If this value is too low, the file watcher in Webpack won’t recognize the changes:
+验证你的系统上是否有足够的监听器，如果其值过低，webpack 的文件监听器将不会感知到变化：
 
 ```
 cat /proc/sys/fs/inotify/max_user_watches
 ```
 
-Arch users, add `fs.inotify.max_user_watches=524288` to `/etc/sysctl.d/99-sysctl.conf` and then execute `sysctl --system`. Ubuntu users \(and possibly others\):`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`.
+Arch 用户将 `fs.inotify.max_user_watches=524288` 添加到 `/etc/sysctl.d/99-sysctl.conf` 然后执行 `sysctl --system`。Ubuntu 用户和其他系统用户执行：`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`。
 
 ### **OS-X fsevents bug**
 
-On OS-X folders can get corrupted. See this article:
+在 OS-X 的文件夹中可能会导致崩溃。可以参看这篇文章：
 
 [OS X FSEvents bug may prevent monitoring of certain folders](http://feedback.livereload.com/knowledgebase/articles/86239-os-x-fsevents-bug-may-prevent-monitoring-of-certai)
 

@@ -11,10 +11,9 @@
 
 模块解析的算法十分简单：模块依赖在 `node_modules` 文件夹和在每一个被依赖模块的父文件夹中查找。当你的 `npm link` 模块及其平级依赖不在根目录下，就无法找到该模块（你也可以认为在 node.js 的设计中，使用了 `npm link` 的 `peerDependencies` 是不可用的）。注意到应用的依赖，即使没有在 `package.json` 的模块中列出来，也是一种类型的平级依赖（尽管这不是一个完美的设计）。
 
+但是我们可以很容易的在 webpack 中找到解决方案：将 `node_modules` 文件夹添加到项目中的解析路径中。有两个配置项可以配置这一点：`resolve.fallback` 和 `resolveLoader.fallback`。
 
-But you can easily workaround that in webpack: Add the `node_modules` folder of your application to the resolve paths. There are two config options for this: `resolve.fallback` and `resolveLoader.fallback`.
-
-Here is a config example:
+这是一个配置的例子：
 
 ```
 module.exports = {
@@ -23,9 +22,9 @@ module.exports = {
 };
 ```
 
-# **WATCHING**
+# **监听**
 
-## **webpack doesn’t recompile on change while watching**
+## **在监听改变的时候 webpack 不会重新编译**
 
 ### **File changes are being seen, just no files are being updated**
 

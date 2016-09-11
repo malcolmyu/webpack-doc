@@ -48,21 +48,21 @@ Arch 用户将 `fs.inotify.max_user_watches=524288` 添加到 `/etc/sysctl.d/99-
 
 在 OS-X 的文件夹中可能会导致崩溃。可以参看这篇文章：
 
-[OS X FSEvents bug may prevent monitoring of certain folders](http://feedback.livereload.com/knowledgebase/articles/86239-os-x-fsevents-bug-may-prevent-monitoring-of-certai)
+[OS X FSEvents 的 bug 可能阻止某些特定文件夹下的监控](http://feedback.livereload.com/knowledgebase/articles/86239-os-x-fsevents-bug-may-prevent-monitoring-of-certai)
 
-### **Windows paths**
+### **Windows 路径**
 
-webpack expects absolute paths for many config options. `__dirname + "/app/folder"` is wrong, because windows uses `\` as path separator. This breaks some stuff.
+webpack 在许多配置选项中都期望传入绝对路径。`__dirname + "/app/folder"` 的写法是错误的，因为 windows 使用 `\` 作为路径分隔符。这会导致问题。
 
-Use the correct separators. I.e. `path.resolve(__dirname, "app/folder")` or `path.join(__dirname, "app", "folder")`.
+使用正确的分隔符：例如 `path.resolve(__dirname, "app/folder")` 或者 `path.join(__dirname, "app", "folder")`。
 
 ### **Vim**
 
-On some machines Vim is preconfigured with the [backupcopy option](http://vimdoc.sourceforge.net/htmldoc/options.html#'backupcopy') set to **auto**. This could potentially cause problems with the system’s file watching mechanism. Switching this option to `yes` will make sure a copy of the file is made and the original one overwritten on save.
+在一些机器上 vim 预先配置 [备份拷贝（backupcopy）选项](http://vimdoc.sourceforge.net/htmldoc/options.html#'backupcopy') 为**自动**。这可能会导致系统文件监听机制的问题。将选项切换到 `yes` 将确保生产文件拷贝，且原始原价在保存时被覆盖。
 
 `:set backupcopy=yes`
 
-### **File saves in WebStorm don’t trigger the watcher**
+### **在 WebStorm 中保存文件不会触发监听**
 
-When using the JetBrains WebStorm IDE, you may find that saving changed files does not trigger the watcher as you might expect. Try disabling the `safe write` option in the settings, which determines whether files are saved to a temporary location first before the originals are overwritten: uncheck`File > Settings... > System Settings > Use "safe write" (save changes to a temporary file first)`.
+当使用 JetBrains 的 IDE WebStorm 时，你可能会发现保存文件时不会如期望的那样触发监听。可以尝试在设置中禁用 `safe write` 选项，这一选项决定了是否在覆盖源文件前先将文件先保存到一个临时位置。取消勾选 `File > Settings... > System Settings > Use "safe write" (save changes to a temporary file first)`（译者注：可以直接在 WebStorm 的配置中搜 `safe write`，取消勾选即可）。
 

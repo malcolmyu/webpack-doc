@@ -58,7 +58,7 @@ webpack 在许多配置选项中都期望传入绝对路径。`__dirname + "/app
 
 ### **Vim**
 
-在一些机器上 vim 预先配置 [备份拷贝（backupcopy）选项](http://vimdoc.sourceforge.net/htmldoc/options.html#'backupcopy') 为**自动**。这可能会导致系统文件监听机制的问题。将选项切换到 `yes` 将确保生产文件拷贝，且原始原价在保存时被覆盖。
+在一些机器上 vim 预先配置[备份拷贝（backupcopy）选项](http://vimdoc.sourceforge.net/htmldoc/options.html#'backupcopy')为**自动**。这可能会导致系统文件监听机制的问题。将选项切换到 `yes` 将确保生产文件拷贝，且原始文件在保存时被覆盖。
 
 `:set backupcopy=yes`
 

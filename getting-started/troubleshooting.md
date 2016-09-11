@@ -64,5 +64,5 @@ webpack 在许多配置选项中都期望传入绝对路径。`__dirname + "/app
 
 ### **在 WebStorm 中保存文件不会触发监听**
 
-当使用 JetBrains 的 IDE WebStorm 时，你可能会发现保存文件时不会如期望的那样触发监听。可以尝试在设置中禁用 `safe write` 选项，这一选项决定了是否在覆盖源文件前先将文件先保存到一个临时位置。可以在 `File > Settings... > System Settings` 中找到 Use "safe write" (save changes to a temporary file first)` 取消勾选（译者注：可以直接在 WebStorm 的配置中搜 `safe write`，取消勾选即可）。
+当使用 JetBrains 的 IDE WebStorm 时，你可能会发现保存文件时不会如期望的那样触发监听。可以尝试在设置中禁用 `safe write` 选项，这一选项决定了是否在覆盖源文件前先将文件先保存到一个临时位置。可以在 `File > Settings... > System Settings` 中找到 `Use "safe write" (save changes to a temporary file first)` 取消勾选（译者注：可以直接在 WebStorm 的配置中搜 `safe write`，取消勾选即可）。
 

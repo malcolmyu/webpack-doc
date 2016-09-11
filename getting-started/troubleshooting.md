@@ -52,7 +52,7 @@ Arch 用户将 `fs.inotify.max_user_watches=524288` 添加到 `/etc/sysctl.d/99-
 
 ### **Windows 路径**
 
-webpack 在许多配置选项中都期望传入绝对路径。`__dirname + "/app/folder"` 的写法是错误的，因为 windows 使用 `\` 作为路径分隔符。这会导致问题。
+webpack 在许多配置选项中都期望传入绝对路径。`__dirname + "/app/folder"` 的写法是错误的，因为 windows 使用 `\` 作为路径分隔符，这会使其无法正常工作。
 
 使用正确的分隔符：例如 `path.resolve(__dirname, "app/folder")` 或者 `path.join(__dirname, "app", "folder")`。
 

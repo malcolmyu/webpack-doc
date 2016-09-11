@@ -9,7 +9,7 @@
 
 ## `npm link` **的模块无法找到其依赖**
 
-模块解析的算法十分简单：模块依赖在 `node_modules` 文件夹和在每一个被依赖模块的父文件夹中查找。当你的 `npm link` 模块及其平级依赖不在根目录下，就无法找到该模块（你也可以认为在 node.js 的设计中，使用了 `npm link` 的 `peerDependencies` 是不可用的）。注意到应用的依赖，即使没有在 `package.json` 的模块中列出来，也是一种类型的平级依赖（尽管这不是一个完美的设计）。
+模块解析的算法十分简单：模块依赖在每一个被依赖模块的父文件夹中的 `node_modules` 文件夹中查找。当你的 `npm link` 模块及其[**同伴依赖**](https://nodejs.org/en/blog/npm/peer-dependencies/)不在根目录下，就无法找到该模块（你也可以认为在 node.js 的设计中，使用了 `npm link` 的同伴依赖是不可用的）。应该注意的是，即使没有在 `package.json` 的模块中列出来，应用的依赖也是一种同伴依赖（尽管这不是一个完美的设计）。
 
 但是我们可以很容易的在 webpack 中找到解决方案：将 `node_modules` 文件夹添加到项目中的解析路径中。有两个配置项可以配置这一点：`resolve.fallback` 和 `resolveLoader.fallback`。
 
@@ -28,7 +28,7 @@ module.exports = {
 
 ### **文件的改动可被监听，但是没有文件被更新**
 
-通过在运行 webpack 时加上 `-progress` 标记可以验证 webpack 是否没有感知到变动。如果在保存时看到了过程却无文件输出，那更有可能是修改了了一个配置文件，而非监听的文件。
+通过在运行 webpack 时加上 `-progress` 标记可以验证 webpack 确实没有感知到变动。如果在保存时看到了过程却无文件输出，那更有可能是修改了了一个配置文件，而非监听的文件。
 
 ```
 webpack --watch --progress

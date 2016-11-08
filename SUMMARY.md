@@ -11,4 +11,6 @@
     * [开发者工具](getting-started/dev-tools.md)
     * [故障排除](getting-started/troubleshooting.md)
 * [教程与示例](tutorials-and-examples/README.md)
+* [指南](指南.md)
+    * [代码分割](代码分割.md)
 
